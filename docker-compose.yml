@@ -1,22 +1,20 @@
 version: '3.7'
 services:
   java-srv:
-    build:
-      context: java-srv
-    volumes:
-      - ./java-srv/log:/root/log
+    build: java-srv
+    ports:
+      - 80:9000
     depends_on:
       db:
         condition: service_healthy
         restart: true
 
   db:
-    image: postgres:alpine
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    environment:
+      - MSSQL_SA_PASSWORD=z!oBx1ab
+      - ACCEPT_EULA=Y
     ports:
-      - 5432
+      - 1433
     healthcheck:
       test: "pwd"
-    environment:
-      - POSTGRES_DB=animal
-      - POSTGRES_USER=maria
-      - POSTGRES_HOST_AUTH_METHOD=trust

@@ -1,4 +1,4 @@
-# java-cli-maven-blade-postgres-hibernate-simple
+# java-cli-maven-blade-sqlserver-hibernate-simple
 
 ## Description
 Creates a small database table
@@ -11,11 +11,11 @@ hql.
   - hibernate
   - hql
   - blade
-  - postgres driver
+  - mssql driver
 
 ## Docker stack
 - maven:3-openjdk-17
-- postgres:alpine
+- mcr.microsoft.com/mssql/server:2017-latest-ubuntu
 
 ## To run
 `sudo ./install.sh -u`
